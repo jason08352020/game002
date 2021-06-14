@@ -4,27 +4,30 @@ using UnityEngine;
 
 public class jump : MonoBehaviour
 {
-    public float jumpForce;
-    public float gravityModifier;
+    public float jumpForce=11;
+    public float gravityModifier=2;
     Rigidbody rb;
     bool isG = true;
-    score sc;
+    gamemanager gm;
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        Physics.gravity *= gravityModifier;
-        rb.AddForce(Vector3.up * 500);
-        sc = GameObject.Find("ball").GetComponent<score>();
+        
+            rb = GetComponent<Rigidbody>();
+            Physics.gravity  = new Vector3(0, -30, 0);
+            rb.AddForce(Vector3.up * 500);      
+            gm = GameObject.Find("manager").GetComponent<gamemanager>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-            if (Input.GetKeyDown(KeyCode.W) && sc.score1< sc.goal && sc.score2 < sc.goal) 
+            if (Input.GetKeyDown(KeyCode.W) && gm.isplay==true) 
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isG = false;
+            Debug.Log("jump1");
         }
 
         

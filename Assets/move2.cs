@@ -5,18 +5,18 @@ using UnityEngine;
 
 public class move2 : MonoBehaviour
 {
-    public float MoveSpeed;
-    score sc;//, jumpforce;
+    public float MoveSpeed=7;
+    gamemanager gm;//, jumpforce;
     // Start is called before the first frame update
     void Start()
     {
-        sc = GameObject.Find("ball").GetComponent<score>();
+        gm = GameObject.Find("manager").GetComponent<gamemanager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (sc.score1 < sc.goal && sc.score2 < sc.goal)
+        if (gm.isplay == true)
         {
             if (Input.GetKey(KeyCode.LeftArrow))
             {

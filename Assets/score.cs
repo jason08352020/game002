@@ -12,22 +12,22 @@ public class score : MonoBehaviour
     public Text ScoreUI1;
     public Text ScoreUI2;
     public GameObject ball;
-    manager gm;
+    gamemanager gm;
     
     // Start is called before the first frame update
     void Start()
     {
-        gm = GameObject.Find("manager").GetComponent<manager>();
+        gm = GameObject.Find("manager").GetComponent<gamemanager>();
         
     }
     private void OnCollisionEnter(Collision ball)
     {
         Vector3 Pos1 = new Vector3(0, 0, -9);
         Vector3 Pos2 = new Vector3(0, 0, -1);
-        Vector3 Pos3 = new Vector3(0, 4, -2);
-        Vector3 Pos4 = new Vector3(0, 4, -8);
+        Vector3 Pos3 = new Vector3(0, 4, -1);
+        Vector3 Pos4 = new Vector3(0, 4, -9);
         
-            if (ball.gameObject.tag == "plane1" && score1< goal && score2 < goal)
+            if (ball.gameObject.tag == "plane1" && gm.isplay==true)
             {
            
                 score1 += 1;
@@ -38,7 +38,7 @@ public class score : MonoBehaviour
                 gm.ball.transform.position = Pos3;
             
             }
-            else if (ball.gameObject.tag == "plane2" && score2< goal && score1 < goal)
+            else if (ball.gameObject.tag == "plane2" && gm.isplay == true)
             {
             
             
